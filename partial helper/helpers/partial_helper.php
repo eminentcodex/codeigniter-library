@@ -5,7 +5,7 @@
  * @author azhar
  **/
     
-    function partialLoop($script, $data = array()){
+    function partialLoop($script, $data = array()){ 
         foreach($data as $key => $value){
             partial($script, $value);
         }

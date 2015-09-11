@@ -5,18 +5,20 @@
  * @author azhar
  **/
     
-    function partialLoop($script, $data = array()){ 
+    function partialLoop($script, $data = array(),$offset=false){
         foreach($data as $key => $value){
-            partial($script, $value);
+            partial($script, $value, $offset);
+            if($offset)
+                ++$offset;
         }
     }
     
-    function partial($script, $data = array()){
+    function partial($script, $data = array(),$offset=false){
         //Get vars for the current scope
         foreach ($data as $key => $value) {
             $$key = $value;
         }
-        include APPPATH . 'views'.$script;
+        include APPPATH . 'views'.$script.'.php';
     }
     
     function getVars($data){
@@ -25,5 +27,3 @@
             //$GLOBALS[$key] = $value;
         }
     }
-    
-?>
